@@ -1,0 +1,109 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #ee2b2b;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+th {
+  border: 1px solid #f8f6f6;
+  background-color: rgb(247, 4, 4);
+  text-align: left;
+  padding: 8px;
+}
+td {
+  border: 1px solid #fcf8f8;
+  background-color: #f76767;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f52d2d;
+}
+
+nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(247, 4, 4);
+}
+
+nav a {
+  display: inline-block;
+  color: white;
+  text-align: left;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #111;
+}
+
+a {
+  color: rgb(255, 253, 253);
+}
+
+Body{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  background-image: url(workout.jpg);
+  background-size: cover;
+  color: rgb(248, 246, 246);
+  align-items: center;
+  justify-content: center;
+}
+
+content {
+  max-width: 500px;
+  margin: auto;
+}
+
+h1, h2, h3, p, p1, p2{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 45%;
+}
+
+a:link {
+  color: rgb(255, 255, 255);
+}
+
+a:visited {
+  color: rgb(255, 255, 255);
+}
+
+button {
+  background-color: rgb(247, 4, 4)
+}
+ p {
+   color:rgb(255, 255, 255)
+ }
+
+ h1 {
+   color: rgb(247, 4, 4)
+ }
