@@ -1,7 +1,7 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import InstructorsList from "../Components/InstructorList";
 
-function Instructors({}) {
+function Instructors({ }) {
 
     const [instructors, setInstructors] = useState([]);
 
@@ -22,10 +22,10 @@ function Instructors({}) {
         loadInstructors();
     }, []);
 
-    
+
     const onDelete = async instructor_id => {
-        const response = await fetch(`/delete_instructor/${instructor_id}`, { method: 'DELETE'});
-        if(response.status === 204){
+        const response = await fetch(`/delete_instructor/${instructor_id}`, { method: 'DELETE' });
+        if (response.status === 204) {
             const getResponse = await fetch('/get_instructors');
             const instructors = await getResponse.json();
             setInstructors(instructors);
@@ -43,7 +43,7 @@ function Instructors({}) {
                 'Content-Type': 'application/json'
             }
         });
-        if(response.status === 201){
+        if (response.status === 201) {
             alert("Successfully added instructor!");
         } else {
             alert(`Failed to add instructor, status code = ${response.status}`);
@@ -53,12 +53,12 @@ function Instructors({}) {
     const editInstructor = async () => {
         const response = await fetch(`/edit_instructor`, {
             method: 'PUT',
-            body: JSON.stringify({ instructor_id: instructor_id, first_name:efirst_name, last_name:elast_name }),
+            body: JSON.stringify({ instructor_id: instructor_id, first_name: efirst_name, last_name: elast_name }),
             headers: {
                 'Content-Type': 'application/json'
             },
         });
-        if(response.status === 200){
+        if (response.status === 200) {
             alert("Successfully edited the Instructor!");
         } else {
             alert(`Failed to edit Instructor, status code = ${response.status}`);
@@ -68,55 +68,60 @@ function Instructors({}) {
     return <div>
         <h1>Current List of Instructors:</h1>
         <>
-        <InstructorsList instructors={instructors} onDelete={onDelete}></InstructorsList>
+            <InstructorsList instructors={instructors} onDelete={onDelete}></InstructorsList>
         </>
         <p></p>
+        <table>
+            <td>
+                <p></p>
+                <p>** All fields are required to add a Instructor **</p>
+                <form>
+                    <label>Add Instructor:
+                        <input
+                            type="text"
+                            placeholder="First Name"
+                            value={first_name}
+                            onChange={e => setFirstName(e.target.value)} />
+                        <input
+                            type="text"
+                            placeholder="Last Name"
+                            value={last_name}
+                            onChange={e => setLastName(e.target.value)} />
+                        <button
+                            type="submit"
+                            onClick={addInstructor}
+                        >submit</button>
+                    </label>
+                </form>
+                <p></p>
+                <p></p>
+                <p>** All fields are required to edit a Instructor **</p>
+                <form>
+                    <label>Edit Instructor:
+                        <input
+                            type="text"
+                            placeholder="Instructor Id"
+                            value={instructor_id}
+                            onChange={e => getInstructorId(e.target.value)} />
+                        <input
+                            type="text"
+                            placeholder="First Name"
+                            value={efirst_name}
+                            onChange={e => updateFirstName(e.target.value)} />
+                        <input
+                            type="text"
+                            placeholder="Last Name"
+                            value={elast_name}
+                            onChange={e => updateLastName(e.target.value)} />
+                        <button
+                            onClick={editInstructor}
+                            type="submit"
+                        >Save</button>
+                    </label>
+                </form>
+            </td>
+        </table>
         <p></p>
-        <form>
-            <label>Add Instructor:
-            <input
-                    type="text" 
-                    placeholder="First Name"
-                    value={first_name}
-                    onChange={e => setFirstName(e.target.value)} />
-                <input
-                    type="text" 
-                    placeholder="Last Name"
-                    value={last_name}
-                    onChange={e => setLastName(e.target.value)} />
-                <button 
-                    type="submit"
-                    onClick={addInstructor}
-                >submit</button>
-            </label>
-        </form>
-        <p></p>
-        <p></p>
-        <form>
-            <label>Edit Instructor:
-                <input 
-                    type="text"
-                    placeholder="Instructor Id"
-                    value={instructor_id}
-                    onChange={e => getInstructorId(e.target.value)} />
-                <input
-                    type="text" 
-                    placeholder="First Name"
-                    value={efirst_name}
-                    onChange={e => updateFirstName(e.target.value)} />
-                <input
-                    type="text" 
-                    placeholder="Last Name"
-                    value={elast_name}
-                    onChange={e => updateLastName(e.target.value)} />
-                <button 
-                    onClick={editInstructor}
-                    type="submit"
-                >Save</button>
-            </label>
-        </form>
-        <p></p>
-        <a href="/">home</a>
     </div>
 }
 

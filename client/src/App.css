@@ -23,22 +23,26 @@
 }
 
 table {
+  margin-left: auto;
+  margin-right:auto;
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 60%;
+  width: 70%;
 }
 
 th {
   border: 1px solid #f8f6f6;
   background-color: rgb(247, 4, 4);
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 td {
+  margin-left: auto;
+  margin-right:auto;
   border: 1px solid #fcf8f8;
-  background-color: #f76767;
+  background-color: #f57979;
   text-align: left;
-  padding: 8px;
+  padding: 10px;
 }
 
 tr:nth-child(even) {
@@ -50,13 +54,13 @@ nav {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: rgb(247, 4, 4);
+  background-color: rgb(247, 1, 1);
 }
 
 nav a {
   display: inline-block;
-  color: white;
-  text-align: left;
+  color: rgb(255, 255, 255);
+  text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
@@ -66,10 +70,12 @@ nav a:hover {
 }
 
 a {
-  color: rgb(255, 253, 253);
+  color: rgb(250, 245, 245);
 }
 
 Body{
+  margin-left: auto;
+  margin-right:auto;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
   background-image: url(workout.jpg);
   background-size: cover;
@@ -79,31 +85,63 @@ Body{
 }
 
 content {
+  margin-left: auto;
+  margin-right:auto;
   max-width: 500px;
   margin: auto;
 }
 
-h1, h2, h3, p, p1, p2{
+h1, h2, h3, p1, p2, p, form, link, td{
+  color:#fcf8f8;
+  margin-left: auto;
+  margin-right:auto;
+  text-align: center;
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 45%;
+  width: 90;
 }
 
 a:link {
+  margin-left: auto;
+  margin-right:auto;
   color: rgb(255, 255, 255);
 }
 
 a:visited {
-  color: rgb(255, 255, 255);
+  color: rgb(252, 249, 249);
 }
 
 button {
-  background-color: rgb(247, 4, 4)
+  font: white;
+  margin-left: auto;
+  margin-right:auto;
+  background-color: rgb(170, 163, 163)
 }
- p {
-   color:rgb(255, 255, 255)
- }
 
  h1 {
-   color: rgb(247, 4, 4)
+  margin-left: auto;
+  margin-right:auto;
+  color: rgb(255, 255, 255)
+ }
+
+ .form {
+  font: white;
+  text-align:center;
+  margin-left: auto;
+  margin-right:auto;
+ }
+
+ .label {
+  font: white;
+  margin-left: auto;
+  margin-right:auto;
+ }
+
+ .Pages {
+  margin-left: auto;
+  margin-right:auto;
+ }
+
+ .h2 {
+   color:#ee2b2b;
  }
