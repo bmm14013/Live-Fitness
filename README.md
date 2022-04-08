@@ -5,7 +5,7 @@ The database system is for internal use and as such the users would be anywhere 
 
 Created using React.js, Express.js and MySQL
 
-Webpage: [Live-Fitness](https://live-fitness-internal@herokuapp.com)
+Webpage: [Live-Fitness](https://live-fitness-internal.herokuapp.com)
 
 *Note: dbcon file is empty and contains no connection info. Need to input your own db info if run locally.
 
