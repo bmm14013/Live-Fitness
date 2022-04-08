@@ -7,6 +7,6 @@ Created using React.js, Express.js and MySQL
 
 Webpage: [Live-Fitness](https://live-fitness-internal@herokuapp.com)
 
-*Note: to dbcon file is empty and contains no connection info. 
+*Note: dbcon file is empty and contains no connection info. 
 
 
