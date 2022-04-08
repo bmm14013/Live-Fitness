@@ -18,19 +18,12 @@ function Members() {
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
 
-    const [member_id, getMemberId] = useState('');
-    const [efirst_name, updateFirstName] = useState('');
-    const [elast_name, updateLastName] = useState('');
-    const [ebirthday, updateBirthday] = useState('');
-    const [ephone_number, updatePhoneNumber] = useState('');
-    const [estreet_name, updateStreetName] = useState('');
-    const [ecity, updateCity] = useState('');
-    const [estate, updateState] = useState('');
-    const [ezip, updateZip] = useState('');
-
     const loadMembers = async () => {
         const response = await fetch("/get_members");
         const members = await response.json();
+        getMemberById('');
+        getMemberByFirstName('');
+        getMemberByLastName('');
         setMembers(members);
     }
 
@@ -49,6 +42,8 @@ function Members() {
         });
         const filtered_members = await response.json();
         setMembers(filtered_members);
+        getMemberByFirstName('');
+        getMemberByLastName('');
     }
 
     const loadMemberByName = async () => {
@@ -62,6 +57,7 @@ function Members() {
         });
         const filtered_members = await response.json();
         setMembers(filtered_members);
+        getMemberById('');
     }
 
     const addMember = async () => {
@@ -79,7 +75,7 @@ function Members() {
         if (response.status === 201) {
             alert("Successfully added member!");
         } else {
-            alert(`Failed to add exercise, status code = ${response.status}`);
+            alert(`Failed to add member, status code = ${response.status}. Please make sure all fields are filled correctly.`);
         }
     };
 
@@ -90,6 +86,7 @@ function Members() {
             const getResponse = await fetch('/get_members');
             const members = await getResponse.json();
             setMembers(members);
+            alert('Successfully deleted member!');
         } else {
             console.error(`Failed to delete member with id=${member_id}, status code = ${response.status}`);
         }
@@ -118,7 +115,6 @@ function Members() {
                         >search</button>
                     </label>
                 </form>
-                <p>** First and Last name required **</p>
                 <p></p>
                 <form onSubmit={e => { e.preventDefault() }}>
                     <label>Search for Member by ID:
@@ -164,6 +160,7 @@ function Members() {
                         <input
                             type="text"
                             placeholder="Phone Number"
+                            maxLength={10}
                             value={phone_number}
                             onChange={e => setPhoneNumber(e.target.value)} />
                         <input

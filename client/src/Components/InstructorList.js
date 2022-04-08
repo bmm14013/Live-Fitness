@@ -9,6 +9,7 @@ function InstructorsList({ instructors, onDelete }) {
                     <th>Instructor Id</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th>Location Id</th>
                     <th>Delete</th>
                 </tr>
             </thead>

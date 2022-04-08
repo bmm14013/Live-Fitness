@@ -7,19 +7,25 @@ function Instructors({ }) {
 
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
+    const [instructor_location_id, setLocationId] = useState('')
 
-    const [instructor_id, getInstructorId] = useState('');
-    const [efirst_name, updateFirstName] = useState('');
-    const [elast_name, updateLastName] = useState('');
+    const [location_ids, getLocationIds] = useState([]);
 
-    const loadInstructors = async instructor => {
+    const loadInstructors = async () => {
         const response = await fetch("/get_instructors");
         const instructors = await response.json();
         setInstructors(instructors);
     }
 
+    const loadLocationIds = async () => {
+        const response = await fetch("/get_location_ids");
+        const location_ids = await response.json();
+        getLocationIds(location_ids);
+    };
+
     useEffect(() => {
         loadInstructors();
+        loadLocationIds();
     }, []);
 
 
@@ -28,6 +34,7 @@ function Instructors({ }) {
         if (response.status === 204) {
             const getResponse = await fetch('/get_instructors');
             const instructors = await getResponse.json();
+            alert('Successfully deleted instructor!')
             setInstructors(instructors);
         } else {
             console.error(`Failed to delete instructor with id=${instructor_id}, status code = ${response.status}`);
@@ -35,7 +42,7 @@ function Instructors({ }) {
     };
 
     const addInstructor = async () => {
-        const newInstructor = { first_name, last_name };
+        const newInstructor = { first_name, last_name, instructor_location_id };
         const response = await fetch('/add_instructor', {
             method: 'POST',
             body: JSON.stringify(newInstructor),
@@ -50,20 +57,6 @@ function Instructors({ }) {
         }
     };
 
-    const editInstructor = async () => {
-        const response = await fetch(`/edit_instructor`, {
-            method: 'PUT',
-            body: JSON.stringify({ instructor_id: instructor_id, first_name: efirst_name, last_name: elast_name }),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        });
-        if (response.status === 200) {
-            alert("Successfully edited the Instructor!");
-        } else {
-            alert(`Failed to edit Instructor, status code = ${response.status}`);
-        }
-    };
 
     return <div>
         <h1>Current List of Instructors:</h1>
@@ -87,6 +80,13 @@ function Instructors({ }) {
                             placeholder="Last Name"
                             value={last_name}
                             onChange={e => setLastName(e.target.value)} />
+                        <select
+                            value={instructor_location_id}
+                            onChange={e => setLocationId(e.target.value)}>
+                            <option> -- Select Location Id --</option>
+                            {location_ids.map((location_id, i) => <option value={location_id.location_id} key={i}>{location_id.location_id}</option>)}
+                        </select>
+                        <p></p>
                         <button
                             type="submit"
                             onClick={addInstructor}
@@ -94,31 +94,6 @@ function Instructors({ }) {
                     </label>
                 </form>
                 <p></p>
-                <p></p>
-                <p>** All fields are required to edit a Instructor **</p>
-                <form>
-                    <label>Edit Instructor:
-                        <input
-                            type="text"
-                            placeholder="Instructor Id"
-                            value={instructor_id}
-                            onChange={e => getInstructorId(e.target.value)} />
-                        <input
-                            type="text"
-                            placeholder="First Name"
-                            value={efirst_name}
-                            onChange={e => updateFirstName(e.target.value)} />
-                        <input
-                            type="text"
-                            placeholder="Last Name"
-                            value={elast_name}
-                            onChange={e => updateLastName(e.target.value)} />
-                        <button
-                            onClick={editInstructor}
-                            type="submit"
-                        >Save</button>
-                    </label>
-                </form>
             </td>
         </table>
         <p></p>

@@ -7,6 +7,7 @@ function Instructor({ instructor, onDelete }) {
             <td>{instructor.instructor_id}</td>
             <td>{instructor.first_name}</td>
             <td>{instructor.last_name}</td>
+            <td>{instructor.location_id}</td>
             <td><MdDelete onClick={ () => onDelete(instructor.instructor_id)}></MdDelete></td>
         </tr>
     );

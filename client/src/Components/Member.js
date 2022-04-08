@@ -7,7 +7,7 @@ function Member({ member, onDelete }) {
             <td>{member.member_id}</td>
             <td>{member.first_name}</td>
             <td>{member.last_name}</td>
-            <td>{member.birthday}</td>
+            <td>{member["DATE_FORMAT(birthday, '%b %d %Y')"]}</td>
             <td>{member.phone_number}</td>
             <td>{member.street_name}</td>
             <td>{member.city}</td>

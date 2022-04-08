@@ -1,7 +1,7 @@
 import React from 'react';
 import Class from './Class'
 
-function ClassesList({ classes, onDelete }) {
+function ClassesList({ classes, onEdit, onDelete }) {
     return (
         <table id="classes" class="styled-table">
             <thead>
@@ -13,12 +13,12 @@ function ClassesList({ classes, onDelete }) {
                     <th>Instructor Id</th>
                     <th>Location Id</th>
                     <th>Description</th>
+                    <th>Edit</th>
                     <th>Delete</th>
-                    <th>Add Member</th>
                 </tr>
             </thead>
             <tbody>
-                {classes.map((class_item, i) => <Class class_item={class_item} key={i} onDelete={onDelete}/>)}
+                {classes.map((class_item, i) => <Class class_item={class_item} key={i} onEdit={onEdit} onDelete={onDelete}/>)}
             </tbody>
         </table>
     );
